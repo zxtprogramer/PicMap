@@ -1,0 +1,17 @@
+.textinput{
+width: 200px;
+height:30px;    
+line-height: 30px;
+text-align: left;
+color: #000;
+border-radius: 1px;
+border:0px solid black;
+margin:0 0 0 0;
+position: relative;
+overflow: hidden;
+font-size:15px;
+}
+
+
+
+

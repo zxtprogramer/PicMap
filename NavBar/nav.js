@@ -9,17 +9,12 @@ function setStatus(){
 	item=barIDList[i];
 
 	if(item==nowStatus){
-	    $("#" + item).css("background","#0095BB");
+	    $("#" + item).css("background","#42A4E0");
 	}
 	else{
-	    $("#" + item).css("background","#00A2CA");
-
+	    $("#" + item).css("background","#2E88C0");
 	}
-
-
     }
-
-
 }
 
 function navAll(){
@@ -52,4 +47,3 @@ function navMessage(){
     nowStatus="NavMessage";
     setStatus();
 }
-
