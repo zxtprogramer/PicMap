@@ -1,0 +1,41 @@
+#NavDiv{
+    width:100%;
+    height:40px;
+    background:#00A2CA;
+}
+
+
+#Nav{ 
+    width:100%; 
+    height:40px; 
+    background:#00A2CA;
+    margin:0 0; 
+} 
+
+#Nav li{
+    display:inline; 
+    height:40px;
+} 
+
+#Nav li a{
+    display:inline-block; 
+    padding:0 10px; 
+    height:40px; 
+    line-height:40px;
+    text-decoration:none;
+    color:#FFF; 
+    font-family:"\5FAE\8F6F\96C5\9ED1"; 
+    font-size:16px;
+} 
+
+#Nav li a:hover{background:#0095BB}
+
+#Nav li a.LoginPart{
+    display:inline-block; 
+    padding:0 10px; 
+    height:40px; 
+    line-height:40px; 
+    color:#FFF; 
+    font-family:"\5FAE\8F6F\96C5\9ED1"; 
+    font-size:12px;
+} 
