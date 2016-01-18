@@ -21,22 +21,23 @@ commentList[2]["HeadImg"]="";
 
 
 function createCommentItem(index, userName, time, des, headImg){
-    $con="<div id=\"ComItem" + index + "\" class=\"CommentItemDiv\">";
-    $con=$con + "<div class=\"ComHeadImgDiv\"><img class=\"ComHeadImg\" src=\"" + headImg + "\" />";
-    $con=$con + "<div class=\"ComDesDiv\"><h1>" + userName + "</h1><br />";
-    $con=$con + "<h2>" + des + "</h2>";
-    $con=$con + "</div>";
+    $con="<li> <img class=\"ComHeadImg\" src=\"" + headImg + "\" />";
+    $con=$con + "<span class=\"NameSpan\">" + userName + "</span> ";
+    $con=$con + "<span class=\"DesSpan\">" + time + "<br />" + des + "</span>";
+    $con=$con + "</li><br /><br />";
     return $con;
 }
 
+
 function showComment(){
+        $("#CommentList").empty();
     for(var i=0;i<commentList.length;i++){
         index=i;
         userName=commentList[i]['UserName'];
         time=commentList[i]['Time'];
         des=commentList[i]['Description'];
         headImg=commentList[i]['HeadImg'];
-        $("#begin").append(createCommentItem(index,userName,time,des,headImg));
+        $("#CommentList").append(createCommentItem(index,userName,time,des,headImg));
         
     }
 }

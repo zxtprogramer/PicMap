@@ -72,9 +72,10 @@ function viewNext(){
     showPic();
 }
 
-
-$(window).resize(function(){setSize();showPic();});
-initImgListDiv();
-showPic();
+if($("#PicViewDiv").length>0){
+    $(window).resize(function(){setSize();showPic();});
+    initImgListDiv();
+    showPic();
+}
 
 

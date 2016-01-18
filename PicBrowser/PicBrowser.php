@@ -1,10 +1,16 @@
 <link href="PicBrowser.css" rel='stylesheet' type='text/css' />
 <div class="PicBrowserDiv">
 
-  <div class="PicViewDiv">
+  <div class="PicViewFrame" id="PicViewFrame">
+   <?php
+    require("/PicMap/PicView/PivView.php");
+   ?>
   </div>
 
-  <div class="CommentDiv">
+  <div class="CommentFrame" id="CommentFrame">
+    <?php
+    require("/PicMap/CommentView/CommentView.php");
+    ?>
   </div>
 
 
