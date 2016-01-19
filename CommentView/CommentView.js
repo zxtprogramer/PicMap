@@ -21,7 +21,7 @@ commentList[2]["HeadImg"]="";
 
 
 function createCommentItem(index, userName, time, des, headImg){
-    $con="<li> <img class=\"ComHeadImg\" src=\"" + headImg + "\" />";
+    $con="<li id=\"ComItem" + index + "\" " + "> <img class=\"ComHeadImg\" src=\"" + headImg + "\" />";
     $con=$con + "<span class=\"NameSpan\">" + userName + "</span> ";
     $con=$con + "<span class=\"DesSpan\">" + time + "<br />" + des + "</span>";
     $con=$con + "</li><br /><br />";
@@ -40,6 +40,9 @@ function showComment(){
         $("#CommentList").append(createCommentItem(index,userName,time,des,headImg));
         
     }
+    $("#ComItem0").css("background","#abb");
+    $("#ComItem0").css("height","100px");
+    $("#ComItem0").css("margin","0px");
 }
 
 
