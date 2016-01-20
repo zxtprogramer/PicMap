@@ -76,8 +76,6 @@ function init(){
     createTable("DbDesign.xml");
 }
 
-
-
 function addUser($userName, $password, $email, $gender){
     if(checkUser($userName, $email)>0) return;
     $sql="INSERT INTO UserInfoTable (UserName,Password,Email,Gender) VALUES('$userName','$password','$email','$gender')";
@@ -103,8 +101,8 @@ function addMessage($fromID, $toID, $sendTime, $msgType, $message){
     if(!exeSQL($sql)){printf("add message failed");}
 }
 
-function addPic($userID, $picName, $des, $picPath, $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID){
-    $sql="INSERT INTO PicTable (UserID,  PicName, Description, PicPath, ShootTime, UploadTime, Longitude, Latitude, LikeNum, AlbumID) VALUES($userID, '$picName', '$des', '$picPath', $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID)";
+function addPic($userID, $picName, $width, $height, $des, $picPath, $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID){
+    $sql="INSERT INTO PicTable (UserID,  PicName, Description, PicPath, ShootTime, UploadTime, Longitude, Latitude, LikeNum, AlbumID) VALUES($userID, '$picName', $width, $height, '$des', '$picPath', $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID)";
     if(!exeSQL($sql)){printf("add pic error");}
 }
 
@@ -112,10 +110,6 @@ function addFriend($fromID, $toID, $type, $createTime){
     $sql="INSERT INTO FriendTable (FromID, ToID, Type, CreateTime) VALUES($fromID, $toID, '$type', $createTime)";
     if(!exeSQL($sql)){printf("add message failed");}
 }
-
-
-
-
 
 function checkUser($userName, $email){
     $sql="SELECT UserID FROM UserInfoTable WHERE UserName='$userName' or Email='$email'";
@@ -134,5 +128,3 @@ addFriend(1,2,'N',time());
 
 addAlbum(1,'al1','haha',time());
 
-
-?>
