@@ -47,3 +47,14 @@ function navMessage(){
 
 function navLogout(){
 }
+
+function navLogin(){
+  $("#MainIframe").attr("src","../Login/Login.php");
+}
+
+function navRegister(){
+  $("#MainIframe").attr("src","../Register/Register.php");
+}
+
+
+

@@ -14,7 +14,7 @@
 	    <?php
 		  session_start();
 		  $str='';
-		  $_SESSION['UserName']="zxt";
+		  //$_SESSION['UserName']="zxt";
 		  if(isset($_SESSION['UserName'])){
 		      $userName=$_SESSION['UserName'];
 			  $userID=$_SESSION['UserID'];
@@ -40,8 +40,8 @@
 			  $str='<li><a id="NavAll" href="javascript:navAll();">全部</a></li>' .
 			  	   '<li><input type="text" value="" class="textinput" /></li>' .
 				   '<li><input type="button" value="搜索" class="button blue tags" /></li>' .
-				   '<li><a href="" class="NavSmallText">登录</a></li>' . 
-				   '<li><a href="" class="NavSmallText">注册</a></li>'; 
+				   '<li><a href="javascript:navLogin()" class="NavSmallText">登录</a></li>' . 
+				   '<li><a href="javascript:navRegister()" class="NavSmallText">注册</a></li>'; 
 		  }
 		  printf($str);
 		?>
