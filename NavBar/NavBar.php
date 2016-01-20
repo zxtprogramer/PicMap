@@ -7,15 +7,18 @@
 
 
 
+
+
 <div id="NavDiv">
 <ul id="Nav">
   <li><a id="NavAll" href="javascript:navAll();">全部</a></li>
-  <li><a id="NavOwn" href="javascript:navOwn()">我的</a></li>
-  <li><input type="text" value="" class="textinput" /></li>
-  <li><input type="button" value="搜索" class="button blue tags" /></li>
-  <li><a id="NavUpload" href="javascript:navUpload()">上传</a></li>
+  <li><a id="NavUser" href="javascript:navUser()">UserName</a></li>
   <li><a id="NavAlbum" href="javascript:navAlbum()">相册</a></li>
   <li><a id="NavFriend"  href="javascript:navFriend()">好友</a></li>
+  <li><input type="text" value="" class="textinput" /></li>
+  <li><input type="button" value="搜索" class="button blue tags" /></li>
+  <li><a id="NavOwn" href="javascript:navOwn()">我的</a></li>
+  <li><a id="NavUpload" href="javascript:navUpload()">上传</a></li>
   <li><a id="NavMessage" href="javascript:navMessage()">消息</a></li>
 
 

@@ -1,0 +1,61 @@
+html,body{
+  margin:0px;
+  padding:0px;
+}
+
+
+#FriendUL{
+  list-style:none;
+  padding:0;
+  margin:0;
+
+}
+
+#FriendULLI{
+  list-style:none;
+  width:200px;
+  height:300px;
+  margin:5px;
+  padding:5px;
+  float:left;
+}
+
+.FriendItemDiv{
+  list-style:none;
+  width:200px;
+  height:300px;
+  margin:5px;
+  padding:5px;
+  border:1px solid #999;
+  //box-shadow:1px 1px 1px 1px #666;
+  overflow:hidden;
+  float:left;
+  background:#eee;
+  
+}
+
+.FriendImg{
+  width:200px;
+  height:150px;
+  margin:0px;
+  padding:0px;
+  border:0px 
+  overflow:hidden;
+  background:#eee;
+
+}
+
+.UserNameSpan{
+  font-size:20px;
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+}
+
+.InfoSpan{
+  color:#aaa;
+  font-size:15px;
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+}
+
+
+
+

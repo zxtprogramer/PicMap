@@ -1,0 +1,44 @@
+#AlbumUL{
+  list-style:none;
+  padding:0;
+  margin:0;
+
+}
+
+#AlbumULLI{
+  list-style:none;
+  width:200px;
+  height:150px;
+  margin:5px;
+  padding:5px;
+  
+}
+
+.AlbumImgDiv{
+  width:200px;
+  height:150px;
+  margin:5px;
+  padding:5px;
+  border:1px solid #999;
+  overflow:hidden;
+  background:#eee;
+  box-shadow:1px 1px 1px 1px #666;
+
+}
+
+.AlbumImgDiv:hover{
+  border:1px solid #99f;
+  box-shadow:1px 1px 1px 1px #99f;
+}
+
+#AlbumUL img{
+  max-width:200px;
+  max-height:150px;
+}
+
+#AlbumUL span{
+  margin:5px;
+  padding:5px;
+}
+
+
