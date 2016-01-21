@@ -4,6 +4,11 @@ body{
   background:#ddd;
 }
 
+.AlbumItemTitle{
+  font-size:15px;
+  color:#999;
+}
+
 .Mask{
   left:0px;
   top:0px;
@@ -166,8 +171,8 @@ body{
 }
 
 .AlbumImgDiv:hover{
-  border:1px solid #9bb;
-  box-shadow:1px 1px 1px 1px #9bb;
+  border:1px solid #9be;
+  box-shadow:1px 1px 1px 1px #9be;
 }
 
 #AlbumUL img{

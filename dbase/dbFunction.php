@@ -133,6 +133,14 @@ function checkLogin($userName, $password){
     else return 1;
 }
 
+function getUserID($userName){
+    $sql="SELECT UserID FROM UserInfoTable WHERE UserName='$userName'";
+    $result=exeSQL($sql);
+    $row=mysql_fetch_array($result);
+    if(empty($row))return 0;
+    else return $row[0];
+}
+
 
 
 //init();

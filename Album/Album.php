@@ -47,7 +47,43 @@
     
 
     <ul class="AlbumUL" id="AlbumUL">
+
+    <?php
+      require("../dbase/dbFunction.php");
+      $homeUserID=getUserID($homeUserName);
+      function createAlbumItem($index, $albumName, $imgPath, $createTime){
+          $str='<li><div class="AlbumItemDiv" id="AlbumItemDiv' . $index . '">' . 
+               '<div class="AlbumImgDivB1"></div>' .
+               '<div class="AlbumImgDivB2"></div>' .
+               '<div class="AlbumImgDiv">' .
+               '  <img src="' . $imgPath . '" />' .
+               '</div>' .
+               '  <span class="AlbumItemTitle">' . $albumName . ' (' . $createTime . ')' . '</span>' .
+               '</div></li>';
+          return $str;
+      } 
     
+      $sql="SELECT * FROM AlbumTable WHERE UserID='$homeUserID'";
+      $res=exeSQL($sql);
+      $index=0;
+      while($row=mysql_fetch_array($res)){
+          $index=$index + 1;
+          $albumID=$row['AlbumID'];
+          $albumName=$row['AlbumName'];
+          $createTime=date("Y/m/d",$row['CreateTime']);
+          $picNum=$row['PicNum'];
+          $facePicID=$row['FacePicID'];
+
+          $sql2="SELECT PicPath FROM PicTable WHERE AlbumID=$albumID LIMIT 0,1";
+          $res2=exeSQL($sql2);
+          $row2=mysql_fetch_array($res2);
+          $facePicPath=$row2[0]."_snap.jpg";
+          $str=createAlbumItem($index, $albumName, $facePicPath, $createTime); 
+          printf($str);
+      }
+    ?>
+    
+<!--
       <li>
 	    <div class="AlbumItemDiv">
           <div class="AlbumImgDivB1" id="AlbumImg0"></div>
@@ -58,17 +94,8 @@
             <span>hello</span>
     	</div>
       </li>
+-->
 
-      <li>
-	    <div class="AlbumItemDiv">
-          <div class="AlbumImgDivB1" id="AlbumImg0"></div>
-          <div class="AlbumImgDivB2" id="AlbumImg0"></div>
-          <div class="AlbumImgDiv" id="AlbumImg0">
-            <img src="/images/0.JPG" />
-    	  </div>
-            <span>hello</span>
-		</div>
-      </li>
 
     </ul>
   </body>
