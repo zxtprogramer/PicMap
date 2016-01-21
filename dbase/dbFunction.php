@@ -69,7 +69,6 @@ function createTable($xmlFile){
 }
 
 
-
 function init(){
     clearDB();
     createDB();
@@ -79,12 +78,18 @@ function init(){
 function addUser($userName, $password, $email, $gender){
     if(checkUser($userName, $email)>0) return;
     $sql="INSERT INTO UserInfoTable (UserName,Password,Email,Gender) VALUES('$userName','$password','$email','$gender')";
-    if(!exeSQL($sql)){printf("add user $userName failed\n");}
+    if(!exeSQL($sql)){return;}//printf("add user $userName failed\n");
+    $sql="SELECT UserID from UserInfoTable WHERE UserName='$userName'";
+	$res=exeSQL($sql);
+	$row=mysql_fetch_array($res);
+	$id=$row[0];
+	addAlbum($id,"Face","The default user face album", time());
+    $sql="SELECT AlbumID FROM AlbumTable WHERE UserID=$id AND AlbumName='Face'";
+	$res=exeSQL($sql);
+	$row=mysql_fetch_array($res);
+	$albumID=$row[0];
+    addPic($id, "DefaultFace.gif", 200, 200, "DefaultFace.gif", "/images/DefaultFace.gif", time(), time(), 0, 0, 0, $albumID);
 }
-
-function setUserInfo($userID, $infoArray){
-}
-
 
 function addAlbum($userID, $albumName, $des, $createTime){
     $sql="INSERT INTO AlbumTable (UserID,AlbumName,Description,CreateTime) VALUES('$userID', '$albumName', '$des', '$createTime')";
@@ -102,7 +107,7 @@ function addMessage($fromID, $toID, $sendTime, $msgType, $message){
 }
 
 function addPic($userID, $picName, $width, $height, $des, $picPath, $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID){
-    $sql="INSERT INTO PicTable (UserID,  PicName, Description, PicPath, ShootTime, UploadTime, Longitude, Latitude, LikeNum, AlbumID) VALUES($userID, '$picName', $width, $height, '$des', '$picPath', $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID)";
+    $sql="INSERT INTO PicTable (UserID,  PicName, Width, Height, Description, PicPath, ShootTime, UploadTime, Longitude, Latitude, LikeNum, AlbumID) VALUES($userID, '$picName', $width, $height, '$des', '$picPath', $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID)";
     if(!exeSQL($sql)){printf("add pic error");}
 }
 
@@ -119,12 +124,19 @@ function checkUser($userName, $email){
     else return 1;
 }
 
+function checkLogin($userName, $password){
+    $sql="SELECT UserID FROM UserInfoTable WHERE UserName='$userName' AND Password='$password'";
+    $result=exeSQL($sql);
+    $row=mysql_fetch_array($result);
+    if(empty($row))return 0;
+    else return 1;
+}
 
 
-init();
-addPic(1,"a.jpg","test1","/pic",time(),time(),0,0,1,1);
-addMessage(1,2,time(),'N',"hello");
-addFriend(1,2,'N',time());
 
-addAlbum(1,'al1','haha',time());
-
+//init();
+//addUser("zxt","t","zxt@pku.edu.cn","M");
+//addPic(1,"a.jpg",300,300,"test1","/pic",time(),time(),0,0,1,1);
+//addMessage(1,2,time(),'N',"hello");
+//addFriend(1,2,'N',time());
+//addAlbum(1,'al1','haha',time());

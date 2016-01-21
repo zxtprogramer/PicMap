@@ -9,6 +9,7 @@
     <Longitude>DOUBLE DEFAULT 0</Longitude>
     <Latitude>DOUBLE DEFAULT 0</Latitude>
     <Share>ENUM('A','F','N') DEFAULT 'N'</Share>    <!--	A: every one can see	F: only friend can see	N: not share	-->
+	<FaceID>INT(4) UNSIGNED DEFAULT 1</FaceID>
   </UserInfoTable>
 
   <PicTable>
@@ -30,7 +31,7 @@
   <AlbumTable>
     <AlbumID>INT(6) UNSIGNED AUTO_INCREMENT NOT NULL UNIQUE PRIMARY KEY</AlbumID>
     <UserID>INT(6) UNSIGNED NOT NULL</UserID>
-    <AlbumName>CHAR(255) </AlbumName>
+    <AlbumName>CHAR(255) UNIQUE</AlbumName>
     <Description>VARCHAR(1024) </Description>
     <CreateTime>INT(6) UNSIGNED</CreateTime>
 	<PicNum>INT(6) UNSIGNED</PicNum>

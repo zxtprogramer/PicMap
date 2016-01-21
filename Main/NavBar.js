@@ -1,5 +1,5 @@
 var nowStatus="NavAll";
-var barIDList=["NavAll", "NavHomeUser", "NavAlbum", "NavFriend", "NavMessage"];
+var barIDList=["NavAll", "NavHomeUser", "NavAlbum", "NavFriend", "NavMessage", "NavSet"];
 
 setStatus();
 
@@ -33,11 +33,13 @@ function navOwn(){
 function navAlbum(){
     nowStatus="NavAlbum";
     setStatus();
+    $("#MainIframe").attr("src","../Album/Album.php?HomeUserName=" + homeUserName);
 }
 
 function navFriend(){
     nowStatus="NavFriend";
     setStatus();
+    $("#MainIframe").attr("src","../Friend/Friend.php");
 }
 
 function navMessage(){
@@ -45,7 +47,13 @@ function navMessage(){
     setStatus();
 }
 
+function navSet(){
+    nowStatus="NavSet";
+    setStatus();
+}
+
 function navLogout(){
+  $("#MainIframe").attr("src","../Login/Logout.php");
 }
 
 function navLogin(){

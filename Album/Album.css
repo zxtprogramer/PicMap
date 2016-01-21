@@ -1,17 +1,115 @@
+body{
+  padding:0px;
+  margin:0px;
+  background:#ddd;
+}
+
+.NewAlbumDiv{
+  width:300px;
+  height:200px;
+  left:0;
+  top:0;
+
+  width:300px;
+  height:280px;
+  display: inline-block;
+  padding: 5px 10px 6px;
+  text-decoration: none;
+  background:#eee;
+  border-radius: 5px;
+  box-shadow: 2px 5px 5px #aaa;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+  position:absolute;
+  visibility:visible;
+}
+
+.AlbumTitle{
+  font-size:18px;
+  line-height:40px;
+  font-weight:normal;
+  font-family:"\5FAE\8F6F\96C5\9ED1";
+  color:#999;
+  margin:0px 10px;
+}
+
+.AlbumBar{
+  width:100%;
+  height:40px;
+  background:#F3F6F8;
+  box-shadow:0px 2px 10px #999;
+  padding:0px 20px;
+}
+
+
 #AlbumUL{
   list-style:none;
   padding:0;
   margin:0;
+  position:relative;
+  left:0px;
+  top:0px;
 
 }
 
 #AlbumULLI{
   list-style:none;
+  width:300px;
+  height:250px;
+  margin:5px;
+  padding:5px;
+  position:relative;
+  float:left;
+  left:0px;
+  top:0px;
+  
+}
+
+.AlbumItemDiv{
+  list-style:none;
+  width:250px;
+  height:200px;
+  margin:10px;
+  padding:10px;
+  position:relative;
+  left:0px;
+  top:0px;
+  float:left;
+  overflow:hidden;
+}
+
+.AlbumImgDivB1{
   width:200px;
   height:150px;
   margin:5px;
   padding:5px;
-  
+  border:1px solid #999;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:1px 1px 1px 1px #999;
+  transform:rotate(5deg);
+  position:absolute;
+  float:left;
+  left:5px;
+  top:5px;
+
+
+}
+
+.AlbumImgDivB2{
+  width:200px;
+  height:150px;
+  margin:5px;
+  padding:5px;
+  border:1px solid #999;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:1px 1px 1px 1px #999;
+  transform:rotate(-5deg);
+  position:absolute;
+  float:left;
+  left:5px;
+  top:5px;
 }
 
 .AlbumImgDiv{
@@ -21,14 +119,17 @@
   padding:5px;
   border:1px solid #999;
   overflow:hidden;
-  background:#eee;
-  box-shadow:1px 1px 1px 1px #666;
-
+  background:#fff;
+  box-shadow:1px 1px 1px 1px #999;
+  position:absolute;
+  float:left;
+  left:5px;
+  top:5px;
 }
 
 .AlbumImgDiv:hover{
-  border:1px solid #99f;
-  box-shadow:1px 1px 1px 1px #99f;
+  border:1px solid #9bb;
+  box-shadow:1px 1px 1px 1px #9bb;
 }
 
 #AlbumUL img{
@@ -39,6 +140,9 @@
 #AlbumUL span{
   margin:5px;
   padding:5px;
+  position:absolute;
+  left:10px;
+  top:180px;
 }
 
 
