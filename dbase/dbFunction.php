@@ -83,7 +83,8 @@ function addUser($userName, $password, $email, $gender){
 	$res=exeSQL($sql);
 	$row=mysql_fetch_array($res);
 	$id=$row[0];
-	addAlbum($id,"Face","The default user face album", time());
+	addAlbum($id,"Face","The user face album", time());
+	addAlbum($id,"Default","The default user album", time());
     $sql="SELECT AlbumID FROM AlbumTable WHERE UserID=$id AND AlbumName='Face'";
 	$res=exeSQL($sql);
 	$row=mysql_fetch_array($res);
