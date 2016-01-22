@@ -48,7 +48,7 @@ foreach($filenames as $name){
         system($cmd);
         //$md5=md5_file($absPath);
         $num=$num + 1;
-        $albumID=$num%3 + 1;
+        $albumID=$num%3 + 3;
 
         $arr=getimagesize($absPath);
         

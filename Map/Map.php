@@ -11,13 +11,12 @@
   <body>
     <div id="MapContainer" tabindex="0" />
 
-  </body>
+  </body onclick="getAllPic();">
 
 
   <script type="text/javascript" src="/js/jquery.min.js"></script>
   <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=605574e6236d5b46cff5ddfe4ac9f437"></script>
   <script type="text/javascript" src="Map.js"></script>
-
 
 </html>
 

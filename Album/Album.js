@@ -23,15 +23,14 @@ function showAlbum(){
 function newAlbum(){
     var xmlhttp;
     xmlhttp=new XMLHttpRequest();
-    var albumName=$("#NewAlbumName").val()
+    var albumName=$("#NewAlbumName").val();
     var albumDes=$("#NewAlbumDes").val()
 
     xmlhttp.onreadystatechange=function(){
         if(xmlhttp.readyState==4 && xmlhttp.status==200){
-            newAlbumHide();
-	        showAlbum();
+		    location.reload();
         }
-    }   
+    };   
 
     xmlhttp.open("POST", "../Main/Command.php",true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
