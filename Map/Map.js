@@ -13,6 +13,18 @@ var selectType="AllRange";
 var para="";
 //////////////////////
 
+function getDis(lng1,lat1,lng2,lat2){
+    R=6371e3;
+    x1=R*cos(lat1)*cos(lng1); x2=R*cos(lat2)*cos(lng2);
+    y2=R*cos(lat1)*sin(lng1); y2=R*cos(lat2)*sin(lng2);
+    z1=R*sin(lat1); z2=R*sin(lat2);
+    dis=sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) + (z1-z2)*(z1-z2));
+    ang=asin(dis/2.0/R)*2;
+    dis=R*ang;
+    return dis;
+}
+
+
 function getBounds(){
     bounds=map.getBounds().toString();
     bArr=bounds.split(';');
@@ -77,6 +89,7 @@ function initMap(){
 function _onClick(e){
     mouseLng=e.lnglat.getLng();
     mouseLat=e.lnglat.getLat();
+    alert(mouseLng+" "+mouseLat);
 }
 
 function _onMoveend(e){
@@ -123,7 +136,7 @@ function freshPic(){
 	
 	picInfo='<div class="SnapDiv" id="SnapDiv' + i + '"><img onclick="javascript:onClickMarker(' + i + ')" class="SnapImg" src="' + picSnapPath + '" /></div>';
 	picMarker[i]=new AMap.Marker({position:[picLng,picLat]});
-    picMarker[i].setLabel({title:"hello", offset:new AMap.Pixel(15,10), content:picInfo});
+    picMarker[i].setLabel({offset:new AMap.Pixel(15,10), content:picInfo});
 	picMarker[i].setMap(map);
     }
     

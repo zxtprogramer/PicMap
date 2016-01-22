@@ -23,4 +23,11 @@ body,html{
 .SnapImg{
     max-width:70px;
     max-height:70px;
+    border:0px;
+}
+
+.amap-marker-label{
+    border:0px solid #fff;
+    margin:0px;
+    padding:0px;
 }

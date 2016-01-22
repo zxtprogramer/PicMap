@@ -11,7 +11,7 @@
   <body>
     <div id="MapContainer" tabindex="0" />
 
-  </body onclick="getAllPic();">
+  </body>
 
 
   <script type="text/javascript" src="/js/jquery.min.js"></script>
