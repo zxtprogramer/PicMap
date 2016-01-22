@@ -13,6 +13,14 @@ var selectType="AllRange";
 var para="";
 //////////////////////
 
+var userName="";
+var userID="";
+
+function getLoginInfo(){
+    userName=parent.userName;
+    userID=parent.userID;
+}
+
 function getDis(lng1,lat1,lng2,lat2){
     R=6371e3;
     x1=R*cos(lat1)*cos(lng1); x2=R*cos(lat2)*cos(lng2);
@@ -89,7 +97,6 @@ function initMap(){
 function _onClick(e){
     mouseLng=e.lnglat.getLng();
     mouseLat=e.lnglat.getLat();
-    alert(mouseLng+" "+mouseLat);
 }
 
 function _onMoveend(e){
@@ -120,11 +127,14 @@ function _onTouchend(e){
 
 
 function freshPic(){
+    nowIndex=0;
+    freshPanel();
+    
     for(var i=0;i<picMarker.length;i++){
 	picMarker[i].setMap();
     }
      for(var i=0;i<picArray.length;i++){
-	userID=picArray[i]['UseID'];
+	userID=picArray[i]['UserID'];
 	picW=picArray[i]['Width'];
 	picH=picArray[i]['Height'];
 	
@@ -144,7 +154,10 @@ function freshPic(){
 
 
 function onClickMarker(index){
+    nowIndex=index;
+    freshPanel();
 }
 
 initMap();
 
+getLoginInfo();
