@@ -99,30 +99,36 @@ function _onClick(e){
     mouseLat=e.lnglat.getLat();
 }
 
-function _onMoveend(e){
+function rangeChangeFresh(){
     getBounds();
+    groupNum=0;
     getPicPara();
     picArray=getPic(picNum, groupNum, sortType, selectType, para);
     freshPic();
+}
+
+function fresh(){
+    getPicPara();
+    picArray=getPic(picNum, groupNum, sortType, selectType, para);
+    if(picArray.length<=1){
+	groupNum=0;
+	getPicPara();
+	picArray=getPic(picNum, groupNum, sortType, selectType, para);
+    }
+    freshPic();
+}
+
+function _onMoveend(e){
+    rangeChangeFresh();
 }
 function _onDragend(e){
-    getBounds();
-    getPicPara();
-    picArray=getPic(picNum, groupNum, sortType, selectType, para);
-    freshPic();
-
+    rangeChangeFresh();
 }
 function _onZoomend(e){
-    getBounds();
-    getPicPara();
-    picArray=getPic(picNum, groupNum, sortType, selectType, para);
-    freshPic();
+    rangeChangeFresh();
 }
 function _onTouchend(e){
-    getBounds();
-    getPicPara();
-    picArray=getPic(picNum, groupNum, sortType, selectType, para);
-    freshPic();
+    rangeChangeFresh();
 }
 
 

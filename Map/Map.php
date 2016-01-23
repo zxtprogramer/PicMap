@@ -12,6 +12,18 @@
   <body>
     <div id="PicPanelDiv" class="PicPanelDiv">
       <div id="PicPanelToolDiv" class="PicPanelToolDiv">
+	<a href="javascript:befPic()">Bef</a>
+	<a href="javascript:nextPic()">Next</a>
+	<a href="javascript:nextGroup()">换一批</a>
+	排序
+	<select id="SortTypeSel" onclick="">
+	  <option value="ShootTime">时间</option>
+	  <option value="LikeNum">好评</option>
+	  <option value="Rand">随机</option>
+	</select>
+	数目
+	<input type="text" id="PicNumText" value="20" />
+	<input type="button" id="Apply" onclick="applyFun()" value="应用" />
 	
       </div>
 
