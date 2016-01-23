@@ -53,6 +53,9 @@ function getPic(num, groupNum, sortType, selectType, para){
     xmlhttp.onreadystatechange=function(){
 	if(xmlhttp.readyState==4 && xmlhttp.status==200){
 	    res=xmlhttp.responseText;
+        if(res<=0){
+          picATmp="";return;
+        }
 	    picList=res.split("#");
 	    for(var i=0;i<picList.length;i++){
 		picATmp[i]=new Array();

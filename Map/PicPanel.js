@@ -137,6 +137,8 @@ function applyFun(){
 }
 
 function freshPanel(){
+    if(picArray.length<=0)return;
+
     picPath=picArray[nowIndex]['PicPath'];
     
     picW=parseInt(picArray[nowIndex]['Width']);
