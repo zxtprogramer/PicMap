@@ -30,7 +30,7 @@
 				   '<li><a id="NavAlbum" href="javascript:navAlbum()">相册</a></li>' .
 				   '<li><a id="NavFriend"  href="javascript:navFriend()">好友</a></li>' .
 			  	   '<li><input type="text" value="" class="textinput" /></li>' .
-				   '<li><input type="button" value="搜索" class="button blue tags" /></li>' .
+				   '<li><input type="button" value="搜索" class="" /></li>' .
 				   '<li><a id="NavMessage" href="javascript:navMessage()" class="NavSmallText">消息</a></li>' .
 				   '<li><a id="NavSet" href="javascript:navSet()" class="NavSmallText">设置</a></li>' .
 				   '<li><a id="NavOwn" href="javascript:navOwn()" class="NavSmallText">' . $userName . '</a></li>' .
