@@ -77,6 +77,16 @@ if(isset($_POST['cmd'])){
         else{
         }
         break;
+
+    case 'addLike':
+        if($ifLogin==1){
+            $picID=$_POST['picID'];
+            addLike($userID, $picID,time());
+        }
+        else{
+        }
+ 
+        break;
    
 
 	default:

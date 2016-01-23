@@ -66,6 +66,8 @@ function createTable($xmlFile){
 	if(!exeSQL($sql)){echo "Create table $tableName failed\n";}
 		
     }
+    $sql="ALTER TABLE LikeTable ADD UNIQUE KEY(UserID,PicID)";
+	if(!exeSQL($sql)){echo "Alert LikeTable failed \n";}
 }
 
 
@@ -93,14 +95,28 @@ function addUser($userName, $password, $email, $gender){
 }
 
 function addAlbum($userID, $albumName, $des, $createTime){
-    $sql="INSERT INTO AlbumTable (UserID,AlbumName,Description,CreateTime) VALUES('$userID', '$albumName', '$des', '$createTime')";
+    $userName=getUserName($userID);
+    $sql="INSERT INTO AlbumTable (UserID,UserName,AlbumName,Description,CreateTime) VALUES('$userID', '$userName', '$albumName', '$des', '$createTime')";
     if(!exeSQL($sql)){printf("add album $albumName failed");}
 }
 
 function addComment($userID, $picID, $comment, $createTime){
-    $sql="INSERT INTO CommentTable (UserID, PicID, Comment, CreateTime) VALUES('$userID', '$picID', '$comment', '$createTime')";
+    $userName=getUserName($userID);
+    $sql="INSERT INTO CommentTable (UserID,UserName,PicID, Comment, CreateTime) VALUES('$userID', '$userName', '$picID', '$comment', '$createTime')";
     if(!exeSQL($sql)){printf("add comment failed");}
 }
+
+function addLike($userID, $picID, $createTime){
+    $userName=getUserName($userID);
+    $sql="INSERT INTO LikeTable (UserID,UserName,PicID,CreateTime) VALUES('$userID', '$userName', '$picID', '$createTime')";
+    if(!exeSQL($sql)){printf("add Like failed");}
+    else{
+        $sql="UPDATE PicTable SET LikeNum=LikeNum+1 WHERE PicID=$picID";
+        if(!exeSQL($sql)){printf("update LikeNum failed");}
+    }
+}
+
+
 
 function addMessage($fromID, $toID, $sendTime, $msgType, $message){
     $sql="INSERT INTO MessageTable (FromID, ToID, SendTime, MsgType, Message) VALUES($fromID, $toID, $sendTime, '$msgType', '$message')";
@@ -108,7 +124,8 @@ function addMessage($fromID, $toID, $sendTime, $msgType, $message){
 }
 
 function addPic($userID, $picName, $width, $height, $des, $picPath, $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID){
-    $sql="INSERT INTO PicTable (UserID,  PicName, Width, Height, Description, PicPath, ShootTime, UploadTime, Longitude, Latitude, LikeNum, AlbumID) VALUES($userID, '$picName', $width, $height, '$des', '$picPath', $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID)";
+    $userName=getUserName($userID);
+    $sql="INSERT INTO PicTable (UserID, UserName,  PicName, Width, Height, Description, PicPath, ShootTime, UploadTime, Longitude, Latitude, LikeNum, AlbumID) VALUES($userID, '$userName', '$picName', $width, $height, '$des', '$picPath', $shootTime, $uploadTime, $longitude, $latitude, $likeNum, $albumID)";
     if(!exeSQL($sql)){printf("add pic error");}
 }
 
@@ -140,6 +157,15 @@ function getUserID($userName){
     if(empty($row))return 0;
     else return $row[0];
 }
+
+function getUserName($userID){
+    $sql="SELECT UserName FROM UserInfoTable WHERE UserID='$userID'";
+    $result=exeSQL($sql);
+    $row=mysql_fetch_array($result);
+    if(empty($row))return 0;
+    else return $row[0];
+}
+
 
 
 

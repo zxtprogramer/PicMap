@@ -33,7 +33,7 @@
 
       <div id="PicPanelTool2Div" class="PicPanelTool2Div">
         <a href="javascript:likeFun()">Like</a>
-        <span "LikeNumLabel"></span>
+        <span id="LikeNumLabel">0</span>
         <a href="javascript:showComment()">Comment</a>
         <a href="javascript:showInfo()">Info</a>
       </div>

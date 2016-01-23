@@ -1,9 +1,44 @@
 var nowIndex=0;
 
+function likeFun(){
+    var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+	    if(xmlhttp.readyState==4 && xmlhttp.status==200){
+	    }
+    };
+
+    xmlhttp.open("POST", "../Main/Command.php",false);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    cmtContent=encodeURIComponent($("#CmtContentText").val());
+    picID=picArray[nowIndex]["PicID"];
+    xmlhttp.send("cmd=addLike&picID=" + picID);
+    //num=parseInt($("#LikeNumLabel").text())+1;
+    //$("#LikeNumLabel").text(num);
+}
+
+function getTimeStr(sec){
+    var d=new Date();
+    d.setTime(parseInt(sec)*1000);
+    year=d.getFullYear();
+    month=d.getMonth()+1;
+    if(month<10)month="0"+month;
+    day=d.getDate();
+    if(day<10)day="0"+day;
+    hour=d.getHours();
+    if(hour<10)hour="0"+hour;
+    min=d.getMinutes();
+    if(min<10)min="0"+min;
+    sec=d.getSeconds();
+    if(sec<10)sec="0"+sec;
+    return year+"-"+month+"-"+day+" " + hour + ":" + min + ":" + sec;
+}
+
 function showInfo(){
     info=[];
     info.push("文件名:" + picArray[nowIndex]['PicName']);
     info.push("文件ID:" + picArray[nowIndex]['PicID']);
+    info.push("LikeNum:" + picArray[nowIndex]['LikeNum']);
     info.push("宽度(px):" + picArray[nowIndex]['Width']);
     info.push("高度(px):" + picArray[nowIndex]['Height']);
     info.push("时间:" + picArray[nowIndex]['ShootTime']);
@@ -36,10 +71,10 @@ function showComment(){
     var cmtArray=getComment(picArray[nowIndex]['PicID']);
     cmt=[];
     for(var i=0;i<cmtArray.length;i++){
-        cmtUserID=cmtArray[i]['UserID'];
-        cmtTime=cmtArray[i]['CreateTime'];
+        cmtUserName=cmtArray[i]['UserName'];
+        cmtTime=getTimeStr(cmtArray[i]['CreateTime']);
         cmtStr=cmtArray[i]['Comment'];
-        str=cmtUserID + "(" + cmtTime + "): " + cmtStr;
+        str=cmtUserName + "(" + cmtTime + "): " + cmtStr;
      
         cmt.push(str);
     }
@@ -122,6 +157,7 @@ function freshPanel(){
 	else{
 	}
 
+	$("#LikeNumLabel").text(picLikeNum);
 	$("#PicPanelImg").attr("src",picPath);
 
 	divH=parseInt($("#PicPanelImgDiv").height());

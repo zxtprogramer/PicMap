@@ -15,6 +15,7 @@
   <PicTable>
     <PicID>INT(6) UNSIGNED AUTO_INCREMENT NOT NULL UNIQUE PRIMARY KEY</PicID>
     <UserID>INT(6) UNSIGNED NOT NULL</UserID>
+    <UserName>CHAR(255) NOT NULL</UserName>
     <PicName>CHAR(255) </PicName>
 	<Width>INT(4) UNSIGNED</Width>
 	<Height>INT(4) UNSIGNED</Height>
@@ -32,6 +33,7 @@
     <!-- AlbumID 1:face 2:default -->
     <AlbumID>INT(6) UNSIGNED AUTO_INCREMENT NOT NULL UNIQUE PRIMARY KEY</AlbumID>
     <UserID>INT(6) UNSIGNED NOT NULL</UserID>
+    <UserName>CHAR(255) NOT NULL</UserName>
     <AlbumName>CHAR(255) UNIQUE</AlbumName>
     <Description>VARCHAR(1024) </Description>
     <CreateTime>INT(6) UNSIGNED</CreateTime>
@@ -39,9 +41,18 @@
 	<FacePicID>INT(6) UNSIGNED DEFAULT 1</FacePicID>
   </AlbumTable>
 
+  <LikeTable>
+    <LikeID>INT(6) UNSIGNED AUTO_INCREMENT NOT NULL UNIQUE PRIMARY KEY</LikeID>
+    <UserID>INT(6) UNSIGNED</UserID>
+    <UserName>CHAR(255) NOT NULL</UserName>
+    <PicID>INT(6) UNSIGNED</PicID>
+    <CreateTime>INT(6) UNSIGNED</CreateTime>
+  </LikeTable>
+
   <CommentTable>
     <ComID>INT(6) UNSIGNED AUTO_INCREMENT NOT NULL UNIQUE PRIMARY KEY</ComID>
     <UserID>INT(6) UNSIGNED</UserID>
+    <UserName>CHAR(255) NOT NULL</UserName>
     <PicID>INT(6) UNSIGNED</PicID>
     <Comment>VARCHAR(1024) </Comment>
     <CreateTime>INT(6) UNSIGNED</CreateTime>
