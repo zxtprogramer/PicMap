@@ -2,7 +2,24 @@
 require("../dbase/dbFunction.php");
 session_start();
 
+function getData($sql){
+    $res=exeSQL($sql);
+    $data="";
+    while($row=mysql_fetch_array($res,MYSQL_ASSOC)){
+	    $item="";
+        foreach($row as $key=>$value){
+            $keyEn=rawurlencode($key);
+            $valueEn=rawurlencode($value);
+            $item=$item . $keyEn . "=" . $valueEn . " ";
+        }
+        if($data=="")$data=trim($item);
+        else $data=$data . "#" . trim($item);
+    }
+    return $data;
+}
+
 $ifLogin=0;
+$userName=""; $userID="";
 if(isset($_SESSION['UserName'])){
     $userName=$_SESSION['UserName'];
     $userID=$_SESSION['UserID'];
@@ -41,24 +58,26 @@ if(isset($_POST['cmd'])){
 		    $sql="SELECT * FROM PicTable WHERE Longitude<$lngMax AND Longitude>$lngMin AND Latitude<$latMax AND Latitude>$latMin ORDER BY $sortType LIMIT $index,$picNum";
 		    break;
 	    }
-	    
-	    
-	    $res=exeSQL($sql);
-	    $data="";
-	    while($row=mysql_fetch_array($res,MYSQL_ASSOC)){
-		$item="";
-		foreach($row as $key=>$value){
-		    $keyEn=urlencode($key);
-		    $valueEn=urlencode($value);
-		    $item=$item . $keyEn . "=" . $valueEn . " ";
-		}
-		if($data=="")$data=trim($item);
-		else $data=$data . "#" . trim($item);
-	    }
-	    print("$data");
-
-
+        
+	    print(getData($sql));
 	    break;
+
+    case 'getComment':
+        $picID=$_POST['picID'];
+        $sql="SELECT * FROM CommentTable WHERE PicID=$picID";
+        print(getData($sql));
+        break;
+
+    case 'sendComment':
+        if($ifLogin==1){
+            $cmt=$_POST['cmt'];
+            $picID=$_POST['picID'];
+            addComment($userID, $picID, $cmt, time());
+        }
+        else{
+        }
+        break;
+   
 
 	default:
 	    print("Error");
