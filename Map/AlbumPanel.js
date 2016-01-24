@@ -30,10 +30,14 @@ function getAlbum(albumUserID){
 }
 
 function freshAlbum(){
-    albumArray=getAlbum(homeUserName);
-    if(parseInt(homeUserName)==0){
+    albumArray=getAlbum(homeUserID);
+    if(parseInt(homeUserID)==0){
         $("#AlbumBarDiv").html("全部相册");
     }
+    else{
+        $("#AlbumBarDiv").html(homeUserName + "的相册");
+    }
+
     str="";
     for(var i=0;i<albumArray.length;i++){
        alName=albumArray[i]['AlbumName'];

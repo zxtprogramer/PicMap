@@ -13,8 +13,9 @@ var selectType="AllRange";
 var para="";
 //////////////////////
 
-var userName="";
-var userID=0;
+//var userName="";
+//var userID=0;
+//
 var homeUserID=0;
 var homeUserName="";
 var albumID=0;
@@ -122,9 +123,9 @@ function fresh(){
     getPicPara();
     picArray=getPic(picNum, groupNum, sortType, selectType, para);
     if(picArray.length<=1){
-	groupNum=0;
-	getPicPara();
-	picArray=getPic(picNum, groupNum, sortType, selectType, para);
+	  groupNum=0;
+	  getPicPara();
+	  picArray=getPic(picNum, groupNum, sortType, selectType, para);
     }
     freshPic();
 }
@@ -151,7 +152,7 @@ function freshPic(){
 	picMarker[i].setMap();
     }
      for(var i=0;i<picArray.length;i++){
-	userID=picArray[i]['UserID'];
+	picUserID=picArray[i]['UserID'];
 	picW=picArray[i]['Width'];
 	picH=picArray[i]['Height'];
 	

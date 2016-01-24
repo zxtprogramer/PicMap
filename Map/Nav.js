@@ -13,6 +13,7 @@ function navGoto(cmd){
             break;
     }
     freshNav();
+    freshAlbum();
     rangeChangeFresh();
     
 }
@@ -30,6 +31,14 @@ function freshNav(){
 }
 
 function navOwn(){
+    homeUserID=userID;
+    homeUserName=userName;
+    albumID=0;
+    albumName="";
+    freshNav();
+    freshAlbum();
+    rangeChangeFresh();
+
 }
 
 function navSet(){

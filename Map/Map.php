@@ -43,7 +43,7 @@
                    '<li><a href="javascript:navLogin()" class="NavSmallText">登录</a></li>' . 
                    '<li><a href="javascript:navRegister()" class="NavSmallText">注册</a></li>'; 
           }
-          $str=$str . "<script type=text/javascript>var userName=\"$userName\"; var userID=\"$userID\";</script>";
+          $str=$str . "<script type=\"text/javascript\">var userName=\"$userName\"; var userID=$userID;</script>";
           printf($str);
         ?>
       </ul>
