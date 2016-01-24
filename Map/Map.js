@@ -14,12 +14,13 @@ var para="";
 //////////////////////
 
 var userName="";
-var userID="";
+var userID=0;
+var homeUserID=0;
+var homeUserName="";
+var albumID=0;
+var albumName="";
 
-function getLoginInfo(){
-    userName=parent.userName;
-    userID=parent.userID;
-}
+////////////////////////
 
 function getDis(lng1,lat1,lng2,lat2){
     R=6371e3;
@@ -84,6 +85,13 @@ function getPicPara(){
         case "AllRange":
             para="lngMax=" + lngMax + "&lngMin=" + lngMin + "&latMax=" + latMax + "&latMin=" + latMin;
             break;
+        case "UserRange":
+            para="userID=" + homeUserID + "&lngMax=" + lngMax + "&lngMin=" + lngMin + "&latMax=" + latMax + "&latMin=" + latMin;
+            break;
+        case "AlbumRange":
+            para="albumID=" + albumID + "&lngMax=" + lngMax + "&lngMin=" + lngMin + "&latMax=" + latMax + "&latMin=" + latMin;
+            break;
+ 
     }
 }
 
@@ -169,4 +177,3 @@ function onClickMarker(index){
 
 initMap();
 
-getLoginInfo();

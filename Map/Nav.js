@@ -1,16 +1,20 @@
 function navGoto(cmd){
-    str='<a href="javascript:navGoto("all");">全部> </a>';
     switch(cmd){
         case 0://all
             homeUserID=0; homeUserName=""; albumID=0; albumName="";
+            selectType="AllRange";
             break;
         case 1: //user
             albumID=0; albumName="";
+            selectType="UserRange";
             break;
         case 2://album
+            selectType="AlbumRange";
             break;
     }
     freshNav();
+    rangeChangeFresh();
+    
 }
 
 function freshNav(){
@@ -32,16 +36,13 @@ function navSet(){
 }
 
 function navLogout(){
-  $("#MainIframe").attr("src","../Login/Logout.php");
+  window.location="../Login/Logout.php";
 }
 
 function navLogin(){
-  $("#MainIframe").attr("src","../Login/Login.php");
+  window.location="../Login/Login.php";
 }
 
 function navRegister(){
-  $("#MainIframe").attr("src","../Register/Register.php");
+  window.location="../Register/Register.php";
 }
-
-
-

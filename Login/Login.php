@@ -12,7 +12,7 @@
 		  $row=mysql_fetch_array($res);
 		  $userID=$row['UserID'];
 		  $_SESSION['UserID']=$userID;
-		  echo "<script type=text/javascript>window.parent.location.href=\"/PicMap/Main/index.php\";</script>";
+		  echo "<script type=text/javascript>window.location=\"/PicMap/Map/Map.php\";</script>";
 	  }
   }
 ?>

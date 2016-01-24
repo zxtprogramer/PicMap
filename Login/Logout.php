@@ -3,6 +3,6 @@
   require("../dbase/dbFunction.php");
   session_start();
   session_destroy();
-  echo "<script type=text/javascript>window.parent.location.href=    \"/PicMap/Main/index.php\";</script>";
+  echo "<script type=text/javascript>window.location=\"/PicMap/Map/Map.php\";</script>";
 ?>
 

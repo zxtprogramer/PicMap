@@ -3,7 +3,7 @@
     height:600px;
     background:#eee;
     position:absolute;
-    top:10px;
+    top:50px;
     left:10px;
     box-shadow:2px 2px 2px #aaa;
     border:1px #999;
@@ -35,10 +35,6 @@
 #PicNumText{
     width:50px;
 }
-
-
-
-
 
 .PicPanelImgDiv{
     width:400px;

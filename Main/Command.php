@@ -57,6 +57,24 @@ if(isset($_POST['cmd'])){
 		    $lngMin=(double)($_POST['lngMin']);
 		    $sql="SELECT * FROM PicTable WHERE Longitude<$lngMax AND Longitude>$lngMin AND Latitude<$latMax AND Latitude>$latMin ORDER BY $sortType LIMIT $index,$picNum";
 		    break;
+
+		case "UserRange":
+		    $latMax=(double)($_POST['latMax']);
+		    $latMin=(double)($_POST['latMin']);
+		    $lngMax=(double)($_POST['lngMax']);
+		    $lngMin=(double)($_POST['lngMin']);
+            $userID=$_POST['userID'];
+		    $sql="SELECT * FROM PicTable WHERE UserID=$userID AND Longitude<$lngMax AND Longitude>$lngMin AND Latitude<$latMax AND Latitude>$latMin ORDER BY $sortType LIMIT $index,$picNum";
+            break;
+
+		case "AlbumRange":
+		    $latMax=(double)($_POST['latMax']);
+		    $latMin=(double)($_POST['latMin']);
+		    $lngMax=(double)($_POST['lngMax']);
+		    $lngMin=(double)($_POST['lngMin']);
+            $albumID=$_POST['albumID'];
+		    $sql="SELECT * FROM PicTable WHERE AlbumID=$albumID AND Longitude<$lngMax AND Longitude>$lngMin AND Latitude<$latMax AND Latitude>$latMin ORDER BY $sortType LIMIT $index,$picNum";
+            break;
 	    }
         
 	    print(getData($sql));
@@ -67,6 +85,19 @@ if(isset($_POST['cmd'])){
         $sql="SELECT * FROM CommentTable WHERE PicID=$picID";
         print(getData($sql));
         break;
+
+    case 'getAlbum':
+        $albumUserID=intval($_POST['albumUserID']);
+        if($albumUserID<=0){
+            $sql="SELECT * FROM AlbumTable WHERE AlbumName!='Face' and AlbumName!='Default'";
+        }
+        else{
+            $sql="SELECT * FROM AlbumTable WHERE UserID=$albumUserID";
+        }
+        print(getData($sql));
+        break;
+
+
 
     case 'sendComment':
         if($ifLogin==1){
