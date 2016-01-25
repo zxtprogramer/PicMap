@@ -13,6 +13,21 @@
 
   <body>
 
+    <div id="MapMask" class="Mask"></div>
+    <div id="NewAlbumDiv" class="NewAlbumDiv">
+      <h1>新建相册</h1>
+      <h2>相册名</h2>
+      <input type="text" id="NewAlbumName" name="NewAlbumName" />
+      <h2>描述</h2>
+      <input type="text" id="NewAlbumDes" name="NewAlbumDes" />
+      <input type="button" class="" value="新建" onclick="newAlbum()" /> 
+      <input type="button" class="" value="取消" onclick="newAlbumHide()"/> 
+    </div>
+
+    <div id="UploadPicDiv" class="UploadPicDiv">
+      <iframe id="UploadIframe" src="upload.php"> </iframe>
+    </div>
+
     <div id="NavDiv">
       <ul id="Nav">
         <?php
@@ -32,6 +47,8 @@
               $str='<li id="NavPath"><a href="javascript:navGoto(\"all\");">全部></a></li>' .
                    '<li><input type="text" value="" class="textinput" /></li>' .
                    '<li><input type="button" value="搜索" class="" /></li>' .
+                   '<li><a id="NavNewAlbum" href="javascript:navNewAlbum()" class="NavSmallText">新建相册</a></li>' .
+                   '<li><a id="NavUpload" href="javascript:navUpload()" class="NavSmallText">上传照片</a></li>' .
                    '<li><a id="NavOwn" href="javascript:navOwn()" class="NavSmallText">' . $userName . '</a></li>' .
                    '<li><a id="NavSet" href="javascript:navSet()" class="NavSmallText">设置</a></li>' .
                    '<li><a href="javascript:navLogout()" class="NavSmallText">注销</a></li>';
@@ -106,7 +123,6 @@
     
     <div id="MapContainer" tabindex="0" />
   </body>
-
 
   <script type="text/javascript" src="/js/jquery.min.js"></script>
   <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=605574e6236d5b46cff5ddfe4ac9f437"></script>

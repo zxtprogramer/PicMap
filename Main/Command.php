@@ -2,6 +2,45 @@
 require("../dbase/dbFunction.php");
 session_start();
 
+function uploadPic(){
+    global $userID;
+    if ((($_FILES["file"]["type"] == "image/gif")
+    || ($_FILES["file"]["type"] == "image/jpeg")
+    || ($_FILES["file"]["type"] == "image/png")
+    || ($_FILES["file"]["type"] == "image/bmp")
+    || ($_FILES["file"]["type"] == "image/pjpeg"))){
+    
+        $filename=$_FILES["file"]["name"];
+        $tmpfile=$_FILES["file"]["tmp_name"];
+        $md5=md5_file($tmpfile);
+
+        $dirPath="/var/www/html/PicMap/Data/" . $userID;
+        if(!file_exists($dirPath)){
+            mkdir($dirPath);
+        }
+        $path="/var/www/html/PicMap/Data/" . $userID . "/" . $md5 ."_". $filename;
+        $path2="/PicMap/Data/" . $userID . "/" . $md5 ."_". $filename;
+        move_uploaded_file($tmpfile, $path);
+    
+    
+        $snapPath=$path . "_snap.jpg";
+        $cmd="convert -resize 150x100 " . $path . " " . $snapPath;
+        system($cmd);
+    
+        $picDes=$_POST['upPicDes'];
+        $picPos=$_POST['upPicPos'];
+        $picAlbumID=$_POST['upAlbumID'];
+
+        $longitude=split(",", $picPos)[0];
+        $latitude=split(",", $picPos)[1];
+        $picSize=getimagesize($path);
+        addPic($userID, $filename,$picSize[0],$picSize[1],$picDes,$path2,time(),time(),$longitude,$latitude,0,$picAlbumID);
+    }
+    header("Location: ../Map/upload.php");
+}
+
+
+
 function getData($sql){
     $res=exeSQL($sql);
     $data="";
@@ -20,6 +59,7 @@ function getData($sql){
 
 $ifLogin=0;
 $userName=""; $userID="";
+
 if(isset($_SESSION['UserName'])){
     $userName=$_SESSION['UserName'];
     $userID=$_SESSION['UserID'];
@@ -32,11 +72,11 @@ if(isset($_POST['cmd'])){
     switch($cmd){
         case 'newAlbum':
 	    if($ifLogin){
-		$albumName=$_POST['AlbumName'];
-		$albumDes=$_POST['AlbumDes'];
-		addAlbum($userID, $albumName, $albumDes, time());
+            $albumName=$_POST['AlbumName'];
+		    $albumDes=$_POST['AlbumDes'];
+		    addAlbum($userID, $albumName, $albumDes, time());
 	    }
-            break;
+        break;
 	    
 	case 'getPic':
 	    $picNum=(int)($_POST['picNum']);
@@ -116,9 +156,13 @@ if(isset($_POST['cmd'])){
         }
         else{
         }
- 
         break;
-   
+
+    case 'uploadPic':
+        if($ifLogin==1){
+            uploadPic();
+        }
+        break;
 
 	default:
 	    print("Error");

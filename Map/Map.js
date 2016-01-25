@@ -12,7 +12,7 @@ var sortType="PicID";
 var selectType="AllRange";
 var para="";
 //////////////////////
-
+//
 //var userName="";
 //var userID=0;
 //
@@ -96,6 +96,13 @@ function getPicPara(){
     }
 }
 
+function initStatus(){
+    $("#MapMask").hide();
+    $("#NewAlbumDiv").hide();
+    $("#UploadPicDiv").hide();
+  
+}
+
 function initMap(){
     map=new AMap.Map('MapContainer',{resizeEnable:true, zoom:12, center:[116.39,39.9]});
     AMap.event.addListener(map,"moveend",_onMoveend);
@@ -109,6 +116,7 @@ function initMap(){
 function _onClick(e){
     mouseLng=e.lnglat.getLng();
     mouseLat=e.lnglat.getLat();
+    $("#UploadIframe").contents().find("#upPicPos").attr("value", mouseLng+","+mouseLat);
 }
 
 function rangeChangeFresh(){
@@ -177,4 +185,5 @@ function onClickMarker(index){
 }
 
 initMap();
+initStatus();
 

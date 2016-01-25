@@ -35,10 +35,7 @@ function navOwn(){
     homeUserName=userName;
     albumID=0;
     albumName="";
-    freshNav();
-    freshAlbum();
-    rangeChangeFresh();
-
+    navGoto(1);
 }
 
 function navSet(){
@@ -54,4 +51,51 @@ function navLogin(){
 
 function navRegister(){
   window.location="../Register/Register.php";
+}
+
+function navUpload(){
+  $("#UploadIframe").attr("src", "upload.php");
+  $("#UploadPicDiv").show();
+}
+
+function navUploadPicHide(){
+  $("#UploadPicDiv").hide();
+}
+
+
+
+function navNewAlbum(){
+  wH=$(window).height();
+  wW=$(window).width();
+  dW=$("#NewAlbumDiv").width();
+  dH=$("#NewAlbumDiv").height();
+
+  $("#NewAlbumDiv").css("left",(wW-dW)/2 + "px");
+  $("#NewAlbumDiv").css("top",(wH-dH)/2 + "px");
+
+  $("#MapMask").show();
+  $("#NewAlbumDiv").show();
+}
+
+function newAlbum(){
+    var xmlhttp;
+    xmlhttp=new XMLHttpRequest();
+    var albumName=$("#NewAlbumName").val();
+    var albumDes=$("#NewAlbumDes").val()
+
+    xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState==4 && xmlhttp.status==200){
+            newAlbumHide();
+        }
+    };
+
+    xmlhttp.open("POST", "../Main/Command.php",true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("cmd=newAlbum&AlbumName=" + albumName + "&AlbumDes=" + albumDes);
+
+}
+
+function newAlbumHide(){
+  $("#MapMask").hide();
+  $("#NewAlbumDiv").hide();
 }
