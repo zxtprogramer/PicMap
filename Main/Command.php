@@ -40,7 +40,6 @@ function uploadPic(){
 }
 
 
-
 function getData($sql){
     $res=exeSQL($sql);
     $data="";
@@ -160,7 +159,18 @@ if(isset($_POST['cmd'])){
 
     case 'uploadPic':
         if($ifLogin==1){
-            uploadPic();
+            $picAlbumID=$_POST['upAlbumID'];
+            $picAlbumName=$_POST['upAlbumName'];
+            $sql="SELECT * FROM AlbumTable WHERE AlbumID=$picAlbumID AND UserID=$userID";
+            $res=exeSQL($sql);
+            $row=mysql_fetch_array($res);
+            if(empty($row)){
+                $sql="SELECT AlbumID FROM AlbumTable WHERE UserID=$userID AND AlbumName='Default'";
+                $res=exeSQL($sql);
+                $row=mysql_fetch_array($res);
+                $_POST['upAlbumID']=$row[0];
+            }
+		    uploadPic();
         }
         break;
 

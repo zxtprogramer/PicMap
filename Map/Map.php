@@ -44,7 +44,8 @@
                   $homeUserName=$userName;
               }
 
-              $str='<li id="NavPath"><a href="javascript:navGoto(\"all\");">全部></a></li>' .
+              $str='<li ><a href="#">当前位置:</a></li>' .
+                   '<li id="NavPath"><a href="javascript:navGoto(\"all\");">全部></a></li>' .
                    '<li><input type="text" value="" class="textinput" /></li>' .
                    '<li><input type="button" value="搜索" class="" /></li>' .
                    '<li><a id="NavNewAlbum" href="javascript:navNewAlbum()" class="NavSmallText">新建相册</a></li>' .
@@ -54,7 +55,8 @@
                    '<li><a href="javascript:navLogout()" class="NavSmallText">注销</a></li>';
           }
           else{
-              $str='<li id="NavPath"><a href="javascript:navGoto(\"all\");">全部></a></li>' .
+              $str='<li ><a href="#">当前位置:</a></li>' .
+                   '<li id="NavPath"><a href="javascript:navGoto(\"all\");">全部></a></li>' .
                    '<li><input type="text" value="" class="textinput" /></li>' .
                    '<li><input type="button" value="搜索" class="button blue tags" /></li>' .
                    '<li><a href="javascript:navLogin()" class="NavSmallText">登录</a></li>' . 
